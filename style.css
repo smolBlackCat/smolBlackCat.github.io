@@ -114,8 +114,12 @@ a {
 
 .page-content {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-auto-rows: max-content;
+	grid-template-columns: 2fr 1fr;
+	grid-template-areas:
+		"header header"
+		"pstack prj"
+		"pstack cprj"
+		"footer footer";
 	grid-gap: 20px;
 	padding-left: clamp(2px, 1.5vw, 20px);
 	padding-right: clamp(2px, 1.5vw, 20px);
@@ -311,11 +315,96 @@ a {
 	filter: drop-shadow(0 0 0.3rem light-dark(black, #E0E0E0FF));
 }
 
+.stack-category {
+	margin-bottom: 20px;
+}
+
+.stack-category h3 {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+}
+
+.stack-category h4 {
+	margin: 10px 0 5px 0;
+	font-size: 0.95em;
+	color: light-dark(#001833, #FFFFFF);
+}
+
+.skills-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 15px;
+}
+
+.skill-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: rgba(0, 0, 0, 0.05);
+	/* subtle background for the tags */
+	padding: 6px 12px;
+	border-radius: 6px;
+	font-size: 0.9em;
+}
+
+.skill-icon {
+	width: 20px;
+	height: 20px;
+	object-fit: contain;
+}
+
+.projects-carousel {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	gap: 30px;
+}
+
+.project-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-decoration: none;
+	color: inherit;
+	width: 80px;
+	/*flex: 0 0 auto;*/
+	transition: transform 0.2s ease;
+}
+
+.project-item:hover {
+	transform: translateY(-5px);
+}
+
+.project-icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 16px;
+	object-fit: contain;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin-bottom: 10px;
+}
+
+.project-title {
+	font-size: 0.85em;
+	font-weight: 500;
+	text-align: center;
+	line-height: 1.2;
+	/* Truncate text if it gets too long */
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
+.mail-icon {
+	background-color: white;
+}
+
 /* Windows Placement */
 #about-me {
-	max-width: 50%;
+	grid-area: header;
 	justify-self: center;
-	grid-column: span 2;
 }
 
 #about-me-content {
@@ -333,6 +422,38 @@ a {
 	align-items: center;
 	margin: 0 auto;
 	padding: 0 0;
+}
+
+#programming-stack {
+	grid-area: pstack;
+}
+
+#projects {
+	grid-area: prj;
+	align-self: end;
+}
+
+#projects .window-content {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#college-projects {
+	grid-area: cprj;
+	align-self: start;
+}
+
+#college-projects .window-content {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#contact {
+	grid-area: footer;
 }
 
 #night-switch {
