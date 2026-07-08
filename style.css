@@ -355,11 +355,13 @@ a {
 	object-fit: contain;
 }
 
-.projects-carousel {
+.projects-container {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
-	gap: 30px;
+	padding-right: 10px;
+	padding-left: 10px;
+	gap: 3em;
 }
 
 .project-item {
@@ -369,7 +371,7 @@ a {
 	text-decoration: none;
 	color: inherit;
 	width: 80px;
-	/*flex: 0 0 auto;*/
+	flex: 0 0 auto;
 	transition: transform 0.2s ease;
 }
 
@@ -391,7 +393,6 @@ a {
 	font-weight: 500;
 	text-align: center;
 	line-height: 1.2;
-	/* Truncate text if it gets too long */
 	overflow: hidden;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
@@ -404,24 +405,38 @@ a {
 /* Windows Placement */
 #about-me {
 	grid-area: header;
-	justify-self: center;
 }
 
-#about-me-content {
+#about-me .window-content {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	justify-content: center;
-	align-items: center;
+	grid-template-columns: 1fr 1.5fr;
+	grid-template-areas:
+		"abt obj"
+		"crt crt";
 	gap: 10px;
 }
 
-
-#about-me-content div {
+#about-me .window-content div {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin: 0 auto;
 	padding: 0 0;
+}
+
+#about-me-section {
+	grid-area: abt;
+	align-self: center;
+
+}
+
+#objctives-section {
+	grid-area: obj;
+
+}
+
+#currently-section {
+	grid-area: crt;
 }
 
 #programming-stack {
@@ -431,6 +446,7 @@ a {
 #projects {
 	grid-area: prj;
 	align-self: end;
+	width: 100%;
 }
 
 #projects .window-content {
@@ -443,6 +459,7 @@ a {
 #college-projects {
 	grid-area: cprj;
 	align-self: start;
+	width: 100%;
 }
 
 #college-projects .window-content {
@@ -454,6 +471,7 @@ a {
 
 #contact {
 	grid-area: footer;
+	width: 100%;
 }
 
 #night-switch {
@@ -461,7 +479,7 @@ a {
 }
 
 @media all and (max-width: 570px) {
-	#about-me-content {
+	#about-me .window-content {
 		display: flex;
 
 		flex-direction: column;
